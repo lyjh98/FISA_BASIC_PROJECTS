@@ -63,6 +63,13 @@ ORDER BY sal DESC
 LIMIT 5;
 ```
 
+ENAME|
+-----+
+KING |
+SCOTT|
+FORD |
+BLAKE|
+CLARK|
 ---
 
 ### 2️⃣ 직업에 A가 2번 들어가는 사람 이름
@@ -75,6 +82,16 @@ FROM emp
 WHERE job LIKE '%A%A%';
 ```
 
+ENAME |
+------+
+BLAKE |
+CLARK |
+SCOTT |
+FORD  |
+ALLEN |
+WARD  |
+MARTIN|
+TURNER|
 ---
 
 ### 3️⃣ 복합 조건 검색
@@ -100,6 +117,15 @@ WHERE (empno >= 7900 AND ename LIKE '_A%')
    OR (deptno = 30 AND hiredate >= '1981-09-01');
 ```
 
+EMPNO|ENAME|DEPTNO|HIREDATE               |
+-----+-----+------+-----------------------+
+ 7900|JAMES|    30|1981-12-03 00:00:00.000|
+
+EMPNO|ENAME |DEPTNO|
+-----+------+------+
+ 7900|JAMES |    30|
+ 7902|FORD  |    20|
+ 7934|MILLER|    10|                           
 ---
 
 ### 4️⃣ 1981년대 입사자 이름 내림차순 - Made By Me
@@ -123,6 +149,17 @@ WHERE hiredate BETWEEN '1981-01-01' AND '1981-12-31'
 ORDER BY ename DESC;
 ```
 
+ENAME |HIREDATE               |
+------+-----------------------+
+KING  |1981-11-17 00:00:00.000|
+BLAKE |1981-05-01 00:00:00.000|
+CLARK |1981-06-09 00:00:00.000|
+FORD  |1981-12-03 00:00:00.000|
+ALLEN |1981-02-20 00:00:00.000|
+WARD  |1981-02-22 00:00:00.000|
+MARTIN|1981-09-28 00:00:00.000|
+TURNER|1981-09-08 00:00:00.000|
+JAMES |1981-12-03 00:00:00.000|
 ---
 
 ### 5️⃣ 1981년 입사자 급여순 상세 조회
@@ -146,6 +183,17 @@ WHERE hiredate BETWEEN '1981-01-01' AND '1981-12-31'
 ORDER BY sal DESC;
 ```
 
+ENAME |JOB      |SAL |HIREDATE               |
+------+---------+----+-----------------------+
+KING  |PRESIDENT|5000|1981-11-17 00:00:00.000|
+BLAKE |MANAGER  |2850|1981-05-01 00:00:00.000|
+CLARK |MANAGER  |2450|1981-06-09 00:00:00.000|
+FORD  |ANALYST  |3000|1981-12-03 00:00:00.000|
+ALLEN |SALESMAN |1600|1981-02-20 00:00:00.000|
+WARD  |SALESMAN |1250|1981-02-22 00:00:00.000|
+MARTIN|SALESMAN |1250|1981-09-28 00:00:00.000|
+TURNER|SALESMAN |1500|1981-09-08 00:00:00.000|
+JAMES |CLERK    | 950|1981-12-03 00:00:00.000|
 ---
 
 ### 6️⃣ 월급 1000 이상인 사원 이름, 직업, 월급 - Made By Me
@@ -157,7 +205,19 @@ SELECT ename, job, sal
 FROM emp
 WHERE sal >= 1000;
 ```
-
+ENAME |JOB      |SAL |
+------+---------+----+
+KING  |PRESIDENT|5000|
+BLAKE |MANAGER  |2850|
+CLARK |MANAGER  |2450|
+SCOTT |ANALYST  |3000|
+FORD  |ANALYST  |3000|
+ALLEN |SALESMAN |1600|
+WARD  |SALESMAN |1250|
+MARTIN|SALESMAN |1250|
+TURNER|SALESMAN |1500|
+ADAMS |CLERK    |1100|
+MILLER|CLERK    |1300|
 ---
 
 ### 7️⃣ 직업이 SALESMAN인 사원 이름, 직업, 연봉 내림차순
@@ -180,6 +240,13 @@ WHERE job = 'SALESMAN'
 ORDER BY 연봉 DESC;
 ```
 
+
+ENAME |JOB     |SAL*12|
+------+--------+------+
+ALLEN |SALESMAN| 19200|
+TURNER|SALESMAN| 18000|
+MARTIN|SALESMAN| 15000|
+WARD  |SALESMAN| 15000|
 ---
 
 ### 8️⃣ 사원 이름, 번호, 직업, 연봉을 부서번호로 정렬
@@ -212,17 +279,32 @@ FROM emp
 ORDER BY 고용일 ASC, 연봉 DESC;
 ```
 
+ENAME |JOB      |HIREDATE               |SAL*12|
+------+---------+-----------------------+------+
+SMITH |CLERK    |1980-12-17 00:00:00.000|  9600|
+ALLEN |SALESMAN |1981-02-20 00:00:00.000| 19200|
+WARD  |SALESMAN |1981-02-22 00:00:00.000| 15000|
+BLAKE |MANAGER  |1981-05-01 00:00:00.000| 34200|
+CLARK |MANAGER  |1981-06-09 00:00:00.000| 29400|
+TURNER|SALESMAN |1981-09-08 00:00:00.000| 18000|
+MARTIN|SALESMAN |1981-09-28 00:00:00.000| 15000|
+KING  |PRESIDENT|1981-11-17 00:00:00.000| 60000|
+FORD  |ANALYST  |1981-12-03 00:00:00.000| 36000|
+JAMES |CLERK    |1981-12-03 00:00:00.000| 11400|
+MILLER|CLERK    |1982-01-23 00:00:00.000| 15600|
+SCOTT |ANALYST  |1987-04-19 00:00:00.000| 36000|
+ADAMS |CLERK    |1987-05-23 00:00:00.000| 13200|
 ---
 
 ## 🔍 MySQL vs Oracle 비교
 
-| 구분             | Oracle          | MySQL                    |
-| -------------- | --------------- | ------------------------ |
-| **TOP N 조회**   | `ROWNUM` 사용     | `LIMIT` 사용               |
-| **날짜 포맷**      | `TO_DATE()`로 변환 | `'YYYY-MM-DD'` 문자열 직접 사용 |
-| **NULL 처리 함수** | `NVL()`         | `IFNULL()`               |
-| **문자 대소문자**    | 대소문자 구분 엄격      | 기본은 구분 안함 (BINARY 필요)    |
-| **서브쿼리/정렬**    | ANSI SQL 호환     | ANSI SQL 호환              |
+| 구분                 | Oracle              | MySQL                           |
+| --------------       | ---------------     | ------------------------        |
+| **TOP N 조회**       | `ROWNUM` 사용       | `LIMIT` 사용                    |
+| **날짜 포맷**        | `TO_DATE()`로 변환  | `'YYYY-MM-DD'` 문자열 직접 사용 |
+| **NULL 처리 함수**   | `NVL()`             | `IFNULL()`                      |
+| **문자 대소문자**    | 대소문자 구분 엄격  | 기본은 구분 안함 (BINARY 필요)   |
+| **서브쿼리/정렬**    | ANSI SQL 호환       | ANSI SQL 호환                   |
 
 ---
 
