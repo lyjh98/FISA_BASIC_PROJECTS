@@ -62,7 +62,7 @@ FROM emp
 ORDER BY sal DESC
 LIMIT 5;
 ```
-
+```
 ENAME|
 -----+
 KING |
@@ -70,6 +70,7 @@ SCOTT|
 FORD |
 BLAKE|
 CLARK|
+```
 ---
 
 ### 2️⃣ 직업에 A가 2번 들어가는 사람 이름
@@ -81,7 +82,7 @@ SELECT ename
 FROM emp
 WHERE job LIKE '%A%A%';
 ```
-
+```
 ENAME |
 ------+
 BLAKE |
@@ -92,6 +93,7 @@ ALLEN |
 WARD  |
 MARTIN|
 TURNER|
+```
 ---
 
 ### 3️⃣ 복합 조건 검색
@@ -120,12 +122,13 @@ WHERE (empno >= 7900 AND ename LIKE '_A%')
 EMPNO|ENAME|DEPTNO|HIREDATE               |
 -----+-----+------+-----------------------+
  7900|JAMES|    30|1981-12-03 00:00:00.000|
-
+```
 EMPNO|ENAME |DEPTNO|
 -----+------+------+
  7900|JAMES |    30|
  7902|FORD  |    20|
- 7934|MILLER|    10|                           
+ 7934|MILLER|    10|
+```                          
 ---
 
 ### 4️⃣ 1981년대 입사자 이름 내림차순 - Made By Me
@@ -148,7 +151,7 @@ FROM emp
 WHERE hiredate BETWEEN '1981-01-01' AND '1981-12-31'
 ORDER BY ename DESC;
 ```
-
+```
 ENAME |HIREDATE               |
 ------+-----------------------+
 KING  |1981-11-17 00:00:00.000|
@@ -160,6 +163,7 @@ WARD  |1981-02-22 00:00:00.000|
 MARTIN|1981-09-28 00:00:00.000|
 TURNER|1981-09-08 00:00:00.000|
 JAMES |1981-12-03 00:00:00.000|
+```
 ---
 
 ### 5️⃣ 1981년 입사자 급여순 상세 조회
@@ -182,7 +186,7 @@ FROM emp
 WHERE hiredate BETWEEN '1981-01-01' AND '1981-12-31'
 ORDER BY sal DESC;
 ```
-
+```
 ENAME |JOB      |SAL |HIREDATE               |
 ------+---------+----+-----------------------+
 KING  |PRESIDENT|5000|1981-11-17 00:00:00.000|
@@ -194,6 +198,7 @@ WARD  |SALESMAN |1250|1981-02-22 00:00:00.000|
 MARTIN|SALESMAN |1250|1981-09-28 00:00:00.000|
 TURNER|SALESMAN |1500|1981-09-08 00:00:00.000|
 JAMES |CLERK    | 950|1981-12-03 00:00:00.000|
+```
 ---
 
 ### 6️⃣ 월급 1000 이상인 사원 이름, 직업, 월급 - Made By Me
@@ -204,6 +209,7 @@ JAMES |CLERK    | 950|1981-12-03 00:00:00.000|
 SELECT ename, job, sal
 FROM emp
 WHERE sal >= 1000;
+```
 ```
 ENAME |JOB      |SAL |
 ------+---------+----+
@@ -218,6 +224,7 @@ MARTIN|SALESMAN |1250|
 TURNER|SALESMAN |1500|
 ADAMS |CLERK    |1100|
 MILLER|CLERK    |1300|
+```
 ---
 
 ### 7️⃣ 직업이 SALESMAN인 사원 이름, 직업, 연봉 내림차순
@@ -240,13 +247,15 @@ WHERE job = 'SALESMAN'
 ORDER BY 연봉 DESC;
 ```
 
-
+```
 ENAME |JOB     |SAL*12|
 ------+--------+------+
 ALLEN |SALESMAN| 19200|
 TURNER|SALESMAN| 18000|
 MARTIN|SALESMAN| 15000|
 WARD  |SALESMAN| 15000|
+```
+
 ---
 
 ### 8️⃣ 사원 이름, 번호, 직업, 연봉을 부서번호로 정렬
@@ -279,6 +288,7 @@ FROM emp
 ORDER BY 고용일 ASC, 연봉 DESC;
 ```
 
+```
 ENAME |JOB      |HIREDATE               |SAL*12|
 ------+---------+-----------------------+------+
 SMITH |CLERK    |1980-12-17 00:00:00.000|  9600|
@@ -294,7 +304,14 @@ JAMES |CLERK    |1981-12-03 00:00:00.000| 11400|
 MILLER|CLERK    |1982-01-23 00:00:00.000| 15600|
 SCOTT |ANALYST  |1987-04-19 00:00:00.000| 36000|
 ADAMS |CLERK    |1987-05-23 00:00:00.000| 13200|
+```
+
 ---
+
+## 🔍 어려웠던 점
+기본적인 문법을 사용함에 있어서 Mysql과 Oracle 간의 격차를 좁히는데 중간중간 헷갈렸던 요소가 있었다.
+- https://minibcake.tistory.com/277 위 링크를 통해 가장 기본적인 문제점을 해결하며 이해하기에 도움이 되었다.
+
 
 ## 🔍 MySQL vs Oracle 비교
 
