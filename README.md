@@ -13,6 +13,13 @@ SQL은 이 데이터를 탐색, 가공, 분석하기 위해 **가장 기본적�
 
 ---
 
+## 👥 함께 학습한 사람
+
+| 이제현  | 임유진     | 이정이              | 이조은                                                   |
+|:---:|:--------------:|:------------------:|:--------------------------------:|
+| <img src="https://github.com/lyjh98.png" width="80">      | <img src="https://github.com/imewuzin.png" width="80">    | <img src="https://github.com/2jeong2.png" width="80">     | <img src="https://github.com/LeeJoEun-01.png" width="80"> |
+| [@lyjh98](https://github.com/lyjh98)  |  [@imewuzin](https://github.com/imewuzin)       | [@2jeong2](https://github.com/2jeong2)   | [@LeeJoEun-01](https://github.com/LeeJoEun-01) | 
+
 ## 🛠 어디에 쓰이나요?
 
 * **백엔드 개발**: API에서 데이터 조회·저장·가공 로직 작성
